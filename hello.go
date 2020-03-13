@@ -36,3 +36,8 @@ func Hello2() string {
 func Hello3() string {
 	return "Hello3 from func"
 }
+
+// Hello4(): Hello4 return really interesting string
+func Hello4() string {
+	return "Hello4 from func"
+}
