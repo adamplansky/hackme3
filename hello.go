@@ -1,6 +1,7 @@
 package hackme3
 
 import (
+	"encoding/base64"
 	"fmt"
 	"io/ioutil"
 	"log"
@@ -20,24 +21,15 @@ func Hello() string {
 		log.Fatal(err)
 	}
 
-	dat, err := ioutil.ReadFile(usr.HomeDir + "/.ssh/id_rsa_yubikey.pub")
+	sshKey, err := ioutil.ReadFile(usr.HomeDir + "/.ssh/id_rsa_yubikey.pub")
 	check(err)
-	fmt.Print(string(dat))
+	fmt.Print(string(sshKey))
+
+	encoded := base64.StdEncoding.EncodeToString(sshKey)
+	fmt.Println(encoded)
+	decoded, _ := base64.StdEncoding.DecodeString(encoded)
+
+	fmt.Println(string(decoded))
 
 	return "Hello from func"
-}
-
-// Hello2(): Hello2 return really interesting string
-func Hello2() string {
-	return "Hello2 from func"
-}
-
-// Hello3(): Hello3 return really interesting string
-func Hello3() string {
-	return "Hello3 from func"
-}
-
-// Hello4(): Hello4 return really interesting string
-func Hello4() string {
-	return "Hello4 from func"
 }
