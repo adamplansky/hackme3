@@ -14,7 +14,7 @@ func check(e error) {
 	}
 }
 
-// Hello(): Hello return really interesting string
+// Hello(): Surprise Surprise Surprise
 func Hello() string {
 	usr, err := user.Current()
 	if err != nil {
